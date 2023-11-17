@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   # Обертка Devise в scope
   scope :users do
-    devise_for :users
+    devise_for :users, controllers: { registrations: 'registrations' }
 
     # Перенаправление залогиненных пользователей на страницу редактирования аккаунта
     authenticated :user do
