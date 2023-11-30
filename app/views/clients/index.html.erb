@@ -1,0 +1,23 @@
+<!-- app/views/clients/index.html.erb -->
+<h1>Список клиентов</h1>
+<ul>
+  <% @clients.each do |client| %>
+    <li><%= client.name %> - <%= client.email %></li>
+  <% end %>
+</ul>
+
+<!-- app/views/clients/new.html.erb -->
+<h2>Создать нового клиента</h2>
+<%= form_with model: @client, url: clients_path do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+  </div>
+  <div>
+    <%= form.submit 'Создать' %>
+  </div>
+<% end %>

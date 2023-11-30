@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
     # Перенаправление залогиненных пользователей на страницу редактирования аккаунта
     authenticated :user do
-      root 'users/registrations#edit', as: :authenticated_root
+       get 'client', to: 'clients#index', as: :authenticated_clients
     end
 
     # Перенаправление незалогиненных пользователей на страницу входа
@@ -24,4 +24,7 @@ Rails.application.routes.draw do
   # Маршруты для других ресурсов
   resources :articles
   resources :products
+
+  # Маршруты для клиентов
+  resources :clients, only: [:index, :new, :create]
 end
