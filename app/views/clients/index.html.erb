@@ -2,7 +2,7 @@
 <h1>Список клиентов</h1>
 <ul>
   <% @clients.each do |client| %>
-    <li><%= client.name %> - <%= client.email %></li>
+    <li>name:<%= client.name %> <br>email:<%= client.email %><br>phone:<%= client.phone %></li>
   <% end %>
 </ul>
 
@@ -16,6 +16,10 @@
   <div>
     <%= form.label :email %>
     <%= form.email_field :email %>
+  </div>
+  <div>
+    <%= form.label :phone %>
+    <%= form.text_field :phone %>
   </div>
   <div>
     <%= form.submit 'Создать' %>

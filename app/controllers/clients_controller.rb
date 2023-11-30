@@ -22,7 +22,7 @@ class ClientsController < ApplicationController
 
   private
 
-  def client_params
-    params.require(:client).permit(:name, :email, :phone) # Параметры, разрешенные для массового присваивания
-  end
+def client_params
+  params.permit(:name, :email, :phone)
+end
 end
