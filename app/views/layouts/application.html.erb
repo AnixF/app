@@ -30,6 +30,7 @@
   <header>
     <nav>
       <% if user_signed_in? %>
+		<a href="http://localhost:3000/users/client">Clients</a>
         <%= link_to 'Edit Profile', edit_user_registration_path %>
         <a href="http://localhost:3000/" onclick="sendDeleteRequest('<%= destroy_user_session_path %>'); return false;">Sign Out</a>
       <% else %>

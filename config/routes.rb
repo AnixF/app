@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # Перенаправление залогиненных пользователей на страницу редактирования аккаунта
   authenticated :user do
     get '/users/client', to: 'clients#index', as: :authenticated_clients
-    resources :messages, only: [:create] # Контроллер сообщений
+    resources :messages, only: [:create] # Добавьте эту строку для контроллера сообщений
   end
 
   # Перенаправление незалогиненных пользователей на страницу входа

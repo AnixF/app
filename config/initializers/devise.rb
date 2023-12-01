@@ -17,7 +17,9 @@ Devise.setup do |config|
   config.responder.redirect_status = :see_other
 
   # Добавляем поле `role` в список разрешенных параметров
-  config.authentication_keys = [:email, :role]
+   #config.authentication_keys = [:email, :role]
 
 
 end
+
+
