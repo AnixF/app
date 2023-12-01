@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :first_name, limit: 100
       t.string :last_name, limit: 100
       t.string :email, limit: 150, null: false
-
+	  t.string :role # Добавляем столбец "role"
       t.timestamps
     end
   end
