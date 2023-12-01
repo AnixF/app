@@ -1,3 +1,4 @@
+<% if current_user.role == "admin" ||current_user.role == "support" %>
 <h1>Список клиентов</h1>
 <ul>
   <% @clients.each do |client| %>
@@ -15,7 +16,8 @@
   <% end %>
 </ul>
 
-<p>Текущий пользователь: <%= current_user.role %></p>
+<p>Текущий пользователь: <%= current_user.first_name %></p>
+<p>Роль: <%= current_user.role %></p>
 
 <% if current_user.role == "admin" %>
   <!-- app/views/clients/new.html.erb -->
@@ -37,4 +39,7 @@
       <%= form.submit 'Создать' %>
     </div>
   <% end %>
+<% end %>
+<% else %>
+<h1>Список клиентов доступен только пользователям с ролью admin или support</h1>
 <% end %>
