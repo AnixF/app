@@ -1,3 +1,4 @@
+<% if can? :edit, Client %>
 <h2>Редактировать клиента</h2>
 <%= form_with model: @client, url: client_path(@client), method: :get do |form| %>
   <div>
@@ -15,4 +16,7 @@
   <div>
     <%= form.submit 'Сохранить' %>
   </div>
+<% end %>
+	<% else %>
+	<h1>Страница доступна только администраторам </h1>
 <% end %>

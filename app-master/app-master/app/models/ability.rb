@@ -6,9 +6,11 @@ class Ability
     return unless user.present?
 
     if user.role == "admin"
-      can :manage, Client
+      can :edit, Client
+	  can :read, Client
     elsif user.role == "support"
       can :create, Message
+	  can :read, Client
     end
   end
 end

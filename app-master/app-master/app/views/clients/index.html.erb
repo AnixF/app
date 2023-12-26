@@ -1,5 +1,5 @@
 <p>Роль: <%= current_user.role %></p>
-<% if current_user.role == "admin" ||current_user.role == "support" %>
+<% if can? :read, Client %>
 <h1>Список клиентов</h1>
 <ul>
   <% @clients.each do |client| %>
@@ -8,12 +8,12 @@
       email: <%= client.email %><br>
       phone: <%= client.phone %>
 	 
-<% if current_user.role == "support" %>
+<% if can? :create, Message %>
 <p>
 <%= link_to "Перейти к сообщениям", messages_path(client_id: client.id,client_name: client.name, user_id: current_user.id) %>
 </p>
 <% end %>
-	 <% if current_user.role == "admin" %>
+	 <% if can? :edit, Client %>
         <p>
           <%= link_to "Редактировать", edit_client_path(client) %>	
 		    <%= button_to 'Удалить', client, method: :delete, data: { confirm: 'Вы уверены?' } %>
@@ -27,7 +27,7 @@
 <p>Текущий пользователь: <%= current_user.first_name %></p>
 <p>Роль: <%= current_user.role %></p>
 
-<% if current_user.role == "admin" %>
+<% if can? :edit, Client %>
   <!-- app/views/clients/new.html.erb -->
   <h2>Создать нового клиента</h2>
   <%= form_with model: @client, url: clients_path do |form| %>
