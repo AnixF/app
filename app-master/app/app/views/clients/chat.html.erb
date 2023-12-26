@@ -1,0 +1,23 @@
+<% if can? :create, Message %>
+<hr>
+Имя клиента: <%=  params[:client_name] %>
+<p>ID Клиента: <%= params[:client_id] %></p>
+Ваш id <%=current_user.id %>
+<p></p>
+<% @chat.each do |message| %>
+<% if message.user_id==current_user.id%>
+	message: <%= message.message %> <br>
+ <% end %>
+ 
+	<% end %>
+<%= form_with url: messages_path do |form| %>
+    <%= form.hidden_field :client_id, value: params[:client_id] %>
+	<%= form.hidden_field :client_name, value: params[:client_name] %>
+	<%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.text_field :message, maxlength: 20 %>
+    <%= form.submit 'Написать клиенту' %>
+	<% end %>
+	
+	<% else %>
+	<h1>Страница доступна только агентам службы поддержки</h1>
+<% end %>
